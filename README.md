@@ -105,3 +105,5 @@ php artisan --version
 # Запустить сервер
 php artisan serve
 
+# Запустить сервер tailwind
+npm run dev 

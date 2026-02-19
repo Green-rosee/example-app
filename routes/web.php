@@ -13,3 +13,6 @@ Route::resource('users', UserController::class);
 Route::get('/userspaginate', [UserController::class, 'indexPaginate'])->name('users.indexPaginate');
 Route::get('/my', [MyHomeController::class, 'index'])->name('myhome.index');
 Route::get('/myform', [MyHomeController::class, 'indexForm'])->name('myhome.indexForm');
+
+//--------my example Home Works
+Route::resource('myhome', MyHomeController::class);
