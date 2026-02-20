@@ -11,6 +11,8 @@ class UserRepository implements UserRepositoryInterface
 
     public function store(UserStoreRequest $userStoreRequest): User
     {
+        dd($userStoreRequest->file('avatar'));
+
         $validated = $userStoreRequest->validated();
         $newUser = new User();
 

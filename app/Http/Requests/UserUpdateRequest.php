@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * @property $userRepository
@@ -19,7 +20,16 @@ class UserUpdateRequest extends FormRequest
         $userId = $this->route('user');
 
         return [
-            'name' => 'required|min:3|max:50',
+            'name' => 'required|string|max:50',
+            'email' => 'required|email|unique:users,email,'
+                . $this->route()->parameter('user')->id,
+            'password' => 'nullable|string|min:6|confirmed',
+            'avatar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ];
+
+        /*
+       return [
+           'name' => 'required|min:3|max:50',
             'email' => [
                 'required',
                 'email',
@@ -28,6 +38,8 @@ class UserUpdateRequest extends FormRequest
             'password' => 'nullable|min:5|max:20|confirmed',
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048'
         ];
+        */
+
     }
 
     public function messages(): array

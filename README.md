@@ -107,3 +107,8 @@ php artisan serve
 
 # Запустить сервер tailwind
 npm run dev 
+
+#GitHub
+git status
+git add .
+
