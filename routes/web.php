@@ -7,8 +7,14 @@ use Illuminate\Support\Facades\Route;
 
 //use App\Models\User;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');    // url
+Route::get('/', [HomeController::class, 'index'])->name('home');    // home -псевдоним для страницы //
 Route::resource('users', UserController::class);
+//=============================================================
+/*
+ *
+ *
+ * */
+
 //*** my example Route
 Route::get('/userspaginate', [UserController::class, 'indexPaginate'])->name('users.indexPaginate');
 Route::get('/my', [MyHomeController::class, 'index'])->name('myhome.index');

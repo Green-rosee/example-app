@@ -15,13 +15,10 @@ return new class extends Migration {
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users');
-                //->cascadeOnDelete();//удаление с Бд и удаление Юзера Аватара
 
             $table->string('path');
-            //$table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

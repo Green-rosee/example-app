@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-    <h1>Text</h1>
+    <h3 class="text-green-500">Эта Страница home/index.blade.php</h3>
 @endsection

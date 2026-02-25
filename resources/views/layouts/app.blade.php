@@ -1,87 +1,4 @@
-<!--
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>@yield('title','My Application')</title> -->
-    <!-- Подключение Tailwind и ваших скриптов через Vite -->
-<!--
-    @vite(['resources/css/app.css', 'resources/js/app.js']) -->
-<!--
-</head>
-<body class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased">
-{{--HEDER--}}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{route('home')}}">Top navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
-@yield('content')
-{{--FOOTER--}}
-<footer class="pt-4 my-md-5 pt-md-5 border-top">
-    <div class="row">
-        <div class="col-12 col-md">
-            <img class="mb-2" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
-            <small class="d-block mb-3 text-body-secondary">© 2017–2023</small>
-        </div>
-        <div class="col-6 col-md">
-            <h5>Features</h5>
-            <ul class="list-unstyled text-small">
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md">
-            <h5>About</h5>
-            <ul class="list-unstyled text-small">
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
-</body>
-</html>
--->
 
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
@@ -90,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Моё приложение')</title>
 
-    <!-- Подключение Tailwind и ваших скриптов через Vite -->
+    <!-- Подключение Tailwind и ваших скриптов через Vite npm run dev -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased">
+<body class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-500 text-gray-900 dark:text-gray-100 antialiased">
 
 <!-- Header -->
 <header class="bg-gray-900 border-b border-gray-800 shadow-sm">
@@ -102,7 +19,7 @@
         <div class="flex justify-between items-center h-16">
             <!-- Логотип / название проекта -->
             <a href="{{ route('home') }}" class="text-2xl font-bold text-white tracking-tight">
-                My App
+                <li> My Home Application</li>
             </a>
 
             <!-- Навигация (можно расширить) -->
@@ -111,7 +28,7 @@
                    class="text-gray-300 hover:text-white transition font-medium">
                     Главная
                 </a>
-                <a href="#"
+                <a href="{{route('users.index')}}"
                    class="text-gray-300 hover:text-white transition font-medium">
                     Пользователи
                 </a>
@@ -127,12 +44,12 @@
                     <!-- {{--                    <a href="{{ route('login') }}" --}} -->
                     <a href="#"
                        class="text-gray-300 hover:text-white transition">
-                        Войти
+                        <li>Войти</li>
                     </a>
                     <!-- {{--                    <a href="{{ route('register') }}"--}} -->
                     <a href="#"
-                       class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md transition">
-                        Регистрация
+                       class="px-4 py-2 bg-indigo-700 hover:bg-indigo-700 text-white rounded-xl transition">
+                        <li>Регистрация</li>
                     </a>
                 @else
                     <span class="text-gray-300">
@@ -161,12 +78,96 @@
 <!-- Footer -->
 <footer class="bg-gray-900 border-t border-gray-800 mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-400">
-        <p>© {{ date('Y') }} My App — все права защищены</p>
+        <p>© {{ date('Y') }} My Application Home Works  — все права защищены</p>
         <p class="mt-1">
-            Сделано с ❤️ на Laravel + Tailwind CSS
+            Create Home Works с ❤️ на Php + Laravel + Tailwind CSS
         </p>
     </div>
 </footer>
 
 </body>
 </html>
+
+
+{{--
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
+</body>
+</html>
+--}}

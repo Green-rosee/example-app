@@ -23,9 +23,9 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5|max:50',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email' .$this->route()->parameter('user'),
             'password' => 'required|confirmed',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg'
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
     public function messages(): array

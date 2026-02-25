@@ -3,7 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,6 +14,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $name
  * @property string $email
  * @property string $password
+ * @property Carbon $create_at
  */
 class User extends Authenticatable
 {
@@ -56,4 +59,17 @@ class User extends Authenticatable
     {
         return $this->hasOne(Avatar::class);
     }
+
+    //-------------------------------------------
+    public function avatarPath(): ?string
+    {
+        //усли есть картинка то выполнить
+        if ($this->avatar) {
+            $folderPath=$this->created_at->format('Y/m');
+
+            return 'storage/'. $folderPath . '/' . $this->avatar->path;
+        }
+        return null;
+    }
+
 }

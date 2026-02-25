@@ -19,9 +19,11 @@
                 <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
                     <p class="font-bold">Исправьте следующие ошибки:</p>
                     <ul class="list-disc list-inside mt-2">
+
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
+
                     </ul>
                 </div>
             @endif
@@ -36,7 +38,8 @@
                         </p>
                     </div>
                     <a href="{{ route('users.index') }}"
-                       class="inline-flex items-center px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-lg transition backdrop-blur-sm">
+                       class="inline-flex items-center px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30
+                       text-white rounded-lg transition backdrop-blur-sm">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -46,11 +49,13 @@
                 </div>
             </div>
 
+            <img src="{{asset($user->avatarPath())}}" alt="">
             <!-- Форма редактирования -->
             <div class="p-8">
                 <form method="POST" action="{{ route('users.update', $user->id) }}" class="space-y-6">
                     @csrf
                     @method('PUT')
+
 
                     <!-- Имя -->
                     <div>
@@ -64,7 +69,9 @@
                             value="{{ old('name', $user->name) }}"
                             required
                             autocomplete="name"
-                            class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150"
+                            class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600
+                            dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150"
                             placeholder="Иван Иванов"
                         >
                         @error('name')
@@ -84,7 +91,9 @@
                             value="{{ old('email', $user->email) }}"
                             required
                             autocomplete="email"
-                            class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150"
+                            class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600
+                            dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150"
                             placeholder="ivan@example.com"
                         >
                         @error('email')
@@ -102,7 +111,9 @@
                             name="password"
                             type="password"
                             autocomplete="new-password"
-                            class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150"
+                            class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700
+                            dark:text-white shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150"
                             placeholder="••••••••••••"
                         >
                         @error('password')
@@ -121,7 +132,9 @@
                             name="password_confirmation"
                             type="password"
                             autocomplete="new-password"
-                            class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150"
+                            class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700
+                            dark:text-white shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150"
                             placeholder="••••••••••••"
                         >
                     </div>
@@ -129,17 +142,20 @@
                     <!-- Кнопки -->
                     <div class="flex items-center justify-end gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
                         <a href="{{ route('users.index') }}"
-                           class="px-6 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg transition font-medium">
+                           class="px-6 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600
+                           text-gray-800 dark:text-gray-200 rounded-lg transition font-medium">
                             Отмена
                         </a>
 
                         <button type="submit"
-                                class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700
+                                text-white rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5
+                                font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                             </svg>
-                            Сохранить изменения
+                            Save Changes
                         </button>
                     </div>
 

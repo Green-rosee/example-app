@@ -1,7 +1,12 @@
-{{--
+
+
+
+
+
 
 @extends('layouts.app')
 @section('title','Create new user')
+
 @section('content')
     <div class="container mx-auto px-4 py-8 max-w-2xl">
         <div
@@ -167,9 +172,23 @@
     </div>
 @endsection
 
---}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- new create blade -->
+{{--
 @extends('layouts.main')
 
 @section('content')
@@ -377,3 +396,4 @@
     </script>
 
 @endsection
+--}}

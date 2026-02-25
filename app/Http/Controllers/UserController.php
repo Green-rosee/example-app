@@ -26,8 +26,15 @@ class UserController extends Controller
      */
     public function index(): View
     {
+        $users = User::query()->paginate(10);
+        return view('users.index', compact('users'));
+
+
+        /*
         $users = User::orderBy('creation_at')->paginate(10);
         return view('users.index', ['users' => $users]);
+        */
+
     }
 
     //====================================================
@@ -63,8 +70,9 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(User $user): View
     {
+        //dd($user->avatar->path);
         return view('users.show', [
             'user' => $user //frontend => backand
         ]);

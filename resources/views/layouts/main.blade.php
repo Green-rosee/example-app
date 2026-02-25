@@ -36,7 +36,9 @@
 <body class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-inter antialiased">
 
 <!-- Header / Navbar -->
-<header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm">
+<header class="bg-white dark:bg-gray-900 border-b border-gray-200
+dark:border-gray-800 sticky top-0 z-50 shadow-sm">
+
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
 
@@ -50,6 +52,7 @@
 
             <!-- Навигация (можно расширить) -->
             <nav class="hidden md:flex items-center gap-8">
+
                 <a href="{{ route('users.index') }}"
                    class="text-gray-700 dark:text-gray-300 hover:text-indigo-600
                    dark:hover:text-indigo-400 font-medium transition">
@@ -65,6 +68,7 @@
                    dark:hover:text-indigo-400 font-medium transition">
                     Настройки
                 </a>
+
             </nav>
 
             <!-- Правая часть (пользователь, тема и т.д.) -->
@@ -74,7 +78,8 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path id="sun" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-                        <path id="moon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        <path id="moon" class="hidden" stroke-linecap="round" stroke-linejoin="round"
+                              stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
                     </svg>
                 </button>
 
@@ -92,9 +97,7 @@
                             </button>
                         </form>
                     @else
-                        {{-- <a href="{{ route('login') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline --}}
-                        <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline
-                        font-medium">
+                        <a href="{{ route('login') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">
                             Войти
                         </a>
                     @endauth
@@ -114,8 +117,7 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
             <div>
-                © {{ date('Y') }} <span class="font-medium text-gray-900
-                dark:text-white">Admin Panel</span>. Все права защищены.
+                © {{ date('Y') }} <span class="font-medium text-gray-900 dark:text-white">Admin Panel</span>. Все права защищены.
             </div>
             <div class="flex gap-6">
                 <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Документация</a>
