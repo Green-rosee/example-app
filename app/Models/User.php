@@ -13,6 +13,8 @@ use Illuminate\Notifications\Notifiable;
 /**
  * @property string $name
  * @property string $email
+ * @property bool $active
+ * @property string slug
  * @property string $password
  * @property Carbon $create_at
  */
@@ -30,6 +32,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'active',
+        'slug'
     ];
 
     /**
@@ -70,6 +74,27 @@ class User extends Authenticatable
             return 'storage/'. $folderPath . '/' . $this->avatar->path;
         }
         return null;
+    }
+
+    //------------------------------------------
+    public function getActiveTag(): string
+    {
+        if ($this->active) {
+            return '
+            <span class="inline-flex items-center gap-x-1.5 py-1 px-2 rounded-full
+            text-xs font-medium bg-green-100 text-green-800 dark:bg-green-800/30
+            dark:text-green-500">
+            <span class="size-1.5 inline-block bg-green-600 rounded-full">
+
+            </span>Active</span>';
+        }
+            return '
+         <span class="inline-flex items-center gap-x-1.5 py-1 px-2 rounded-full text-xs font-medium
+         bg-red-100 text-red-800 dark:bg-red-800/30 dark:text-red-500">
+            <span class="size-1.5 inline-block bg-red-600 rounded-full">
+
+            </span>Inactive</span>';
+
     }
 
 }

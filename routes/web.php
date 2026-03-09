@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 //use App\Models\User;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');    // home -псевдоним для страницы //
-Route::resource('users', UserController::class);
+Route::resource('users', UserController::class)
+->except(['edit']);
 //=============================================================
 /*
  *
