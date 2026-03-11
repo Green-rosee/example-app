@@ -6,6 +6,7 @@ use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Repository\User\UserRepository;
+use App\Services\FilterService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -19,7 +20,8 @@ class UserController extends Controller
 
 
     public function __construct(
-        private readonly UserRepository $userRepository
+        private readonly UserRepository $userRepository,
+        private readonly FilterService $filterService
     )
     {
 
@@ -38,6 +40,7 @@ class UserController extends Controller
             ->paginate(self::PER_PAGE);
         */
 
+        /*
         $query = User::query();
 
         if ($request->has('name') && $request->get('name')) {
@@ -66,10 +69,14 @@ class UserController extends Controller
         if($request->has('date_to') && $request->get('date_to')!==null) {
             $query->whereDate('created_at', '<=', $request->date_to);
         }
+        */
 
+        $query = User::query()->apply($request);
 
         return view('users.index', [
-            'users' => $query->paginate(self::PER_PAGE),
+            'users' => $this->filterService->scopeApply($query,$request)
+                ->paginate(self::PER_PAGE)
+            ->withQueryString(),
         ]);
 
         /*

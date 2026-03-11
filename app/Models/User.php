@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\Filter;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -21,7 +22,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable,Filter;
 
     /**
      * The attributes that are mass assignable.
@@ -76,6 +77,12 @@ class User extends Authenticatable
         return null;
     }
 
+
+    /*public function scopeActive($query)
+    {
+        return $query->where('active', true);
+    }*/
+
     //------------------------------------------
     public function getActiveTag(): string
     {
@@ -95,6 +102,11 @@ class User extends Authenticatable
 
             </span>Inactive</span>';
 
+    }
+
+    public function phones(): HasMany
+    {
+        return $this->hasMany(Phone::class);
     }
 
 }

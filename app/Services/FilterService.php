@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Traits;
+namespace App\Services;
 
-//use http\Env\Request;
-//use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-
-trait Filter
+class FilterService
 {
 
     public function scopeApply($query, Request $request): Builder

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>All Users</title>
+    <title>All Users</title>
     {{-- <script src="https://cdn.tailwindcss.com"></script>--}}
 
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="/css/app.css" rel="stylesheet">
 </head>
@@ -140,7 +140,8 @@
 
 
         {{-- Card --}}
-        <div class="bg-white dark:bg-gray-800 shadow-xl rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+        <div
+            class="bg-white dark:bg-gray-800 shadow-xl rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
 
             {{-- Tables --}}
             <div class="overflow-x-auto">
@@ -151,6 +152,7 @@
                         <th>Name</th>
                         <th>Slug</th>
                         <th>Email</th>
+                        <th>Phones</th>
                         <th>Date Of Register</th>
                         <th>Status</th>
                         <th>Actions</th>
@@ -158,12 +160,17 @@
                     </thead>
                     <tbody>
 
-                    @foreach($users as $user)
+                    @forelse($users as $user)
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->slug }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>
+                                @foreach($user->phones as $phone)
+                                    {{ $phone->phoneBrand->name . ': ' }} {{ $phone->number }}<br>
+                                @endforeach
+                            </td>
                             <td>{{ $user->created_at->format('d.m.Y H:i') }}</td>
                             <td>{!! $user->getActiveTag() !!}  </td>
                             <td>
@@ -180,10 +187,9 @@
                                 </a>
 
 
-
-
                                 <!-- route('users.destroy', $user->id)  -->
-                                <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('users.destroy', $user) }}" method="POST"
+                                      style="display:inline;">
                                     @csrf
                                     @method('DELETE')
 
@@ -195,7 +201,19 @@
 
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="4" class="px-6 py-16 text-center text-gray-500 dark:text-gray-400">
+                                <div class="text-6xl mb-4">😔</div>
+                                <p class="text-lg">Пользователи пока отсутствуют</p>
+                                <a href="{{ route('users.create') }}"
+                                   class="mt-4 inline-block text-indigo-600 dark:text-indigo-400 hover:underline">
+                                    Добавить первого пользователя →
+                                </a>
+                            </td>
+                        </tr>
+                    @endforelse
+
                     </tbody>
                 </table>
             </div>
@@ -219,7 +237,6 @@
         </div>
 
     </div>
-
 
 
 </div>
